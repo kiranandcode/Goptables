@@ -3,6 +3,24 @@ import tkinter as tk
 from datetime import timedelta, datetime
 from itertools import cycle
 
+grid_colours = [
+    '#%02x%02x%02x' % (0x1C, 0x77, 0xC3),
+    '#%02x%02x%02x' % (0x39, 0xA9, 0xDB),
+    '#%02x%02x%02x' % (0x40, 0xBC, 0xD8),
+    '#%02x%02x%02x' % (0xE3, 0x92, 0x37),
+    '#%02x%02x%02x' % (0xD6, 0x32, 0x30),
+    '#%02x%02x%02x' % (0x1D, 0xD3, 0xB0),
+    '#%02x%02x%02x' % (0xAF, 0xFC, 0x41),
+    '#%02x%02x%02x' % (0xB2, 0xfF, 0x9E),
+    '#%02x%02x%02x' % (0x6D, 0x72, 0xC3),
+    "red",
+    "green",
+    "blue",
+    "cyan",
+    "yellow",
+    "magenta"
+]
+
 
 class TableManager:
     """
@@ -351,22 +369,3 @@ class TableManager:
                         label = grid_values[i][j]
                 self.grid[i][j][1].set(label)
         self.parameters_changed()
-
-
-grid_colours = [
-    '#%02x%02x%02x' % (0x1C, 0x77, 0xC3),
-    '#%02x%02x%02x' % (0x39, 0xA9, 0xDB),
-    '#%02x%02x%02x' % (0x40, 0xBC, 0xD8),
-    '#%02x%02x%02x' % (0xE3, 0x92, 0x37),
-    '#%02x%02x%02x' % (0xD6, 0x32, 0x30),
-    '#%02x%02x%02x' % (0x1D, 0xD3, 0xB0),
-    '#%02x%02x%02x' % (0xAF, 0xFC, 0x41),
-    '#%02x%02x%02x' % (0xB2, 0xfF, 0x9E),
-    '#%02x%02x%02x' % (0x6D, 0x72, 0xC3),
-    "red",
-    "green",
-    "blue",
-    "cyan",
-    "yellow",
-    "magenta"
-]
