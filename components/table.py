@@ -1,3 +1,4 @@
+import math
 import random
 import tkinter as tk
 from datetime import timedelta, datetime
@@ -20,6 +21,54 @@ grid_colours = [
     "yellow",
     "magenta"
 ]
+
+
+def is_available_space_ahead(i, values):
+    initial_value = values[i]
+    index = None
+    for j in range(len(values)):
+        if initial_value not in values[j-1:j+2]:
+            index = j
+            break
+
+    if index is not None:
+        return index
+
+    for j in range(i, len(values)):
+        if initial_value not in values[j-1:j+1]:
+            return j
+
+    return None
+
+
+
+
+def avoid_consecutive(choices_to_allocate):
+    prev_seen = None
+    count_same = 0
+    for i in range(len(choices_to_allocate)):
+        current = choices_to_allocate[i]
+        if prev_seen is not None:
+            # if we have two consecutive equal tasks
+            if prev_seen == current:
+                # possibly move this task to another position
+                next_ind = is_available_space_ahead(i, choices_to_allocate)
+
+                if next_ind is not None:
+                    # randomly choose whether to replace or not
+                    prob = 0.0 /(math.exp(-count_same))
+                    if random.random() < prob:
+                        count_same += 1
+                    else:
+                        # swap them
+                        choices_to_allocate[i], choices_to_allocate[next_ind] =  choices_to_allocate[next_ind], choices_to_allocate[i]
+                        count_same = 0
+            else:
+                count_same = 0
+
+        current = choices_to_allocate[i]
+        prev_seen = current
+
 
 
 class TableManager:
@@ -215,6 +264,7 @@ class TableManager:
                 assigned_count[task] += 1
 
             random.shuffle(choices_to_allocate)
+            avoid_consecutive(choices_to_allocate)
             for j, task in zip(range(len(self.work_intervals)), choices_to_allocate):
                 wdgt = self.grid[j][i][1]
                 wdgt.set(task)

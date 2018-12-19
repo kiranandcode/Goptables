@@ -32,6 +32,12 @@ Hence, I present Goptables. The best timetabling tool you never knew you needed.
 ## Screenshots
 ![Screenshot of Application](https://raw.githubusercontent.com/Gopiandcode/goptables/master/screenshot.png)
 
+## Installation
+    pip install -r requirements.txt
+
+## Usage
+    python main.py
+
 ## Authentic User Reviews
 > Timetabling system for the modern man.
 > -- me
