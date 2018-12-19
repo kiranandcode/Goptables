@@ -1,4 +1,4 @@
-# goptables
+# Goptables
 A simple timetable application.
 
 ## Description
