@@ -214,7 +214,7 @@ class TimetablePlanner:
             work_length = self.time_manager.work_length
 
             schedule_intervals = []
-            current_time = datetime.now()
+            current_time = self.table_manager.start_date  # datetime.now()
             current_time = datetime.combine(current_time, start_time)
             schedule_intervals.append((current_time, current_time + work_length, 5))
             current_time = current_time + work_length
